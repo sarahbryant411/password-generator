@@ -21,29 +21,32 @@ function generatePassword() {
   // ask the user the questions
   // generate characters for password and assign them to var password
 
-  var length = prompt("What is the length of your password?");
+  var input = prompt("What is the length of your password?");
+  var length = parseInt(input);
   console.log(length)
   if(length < 8 || length > 128) {
-    alert ("Choose a number between 8-128")
-    return null
+    alert ("Choose a number between 8-128");
+    return password;
   }
   var lowercase = confirm("Would you like to use lowecase letters in your password?");
-  if (lowercase) allowedChars = allowedChars.concat(lowerCasedCharacters);
-  console.log(allowedChars);
   var uppercase = confirm("Would you like to use any uppercase letters in your password?");
-  if (uppercase) allowedChars = allowedChars.concat(upperCasedCharacters);
-  console.log(allowedChars);
   var numerics = confirm("Would you like to use numeric characters in your password?");
-  if (numerics) allowedChars = allowedChars.concat(numericCharacters);
-  console.log(allowedChars);
   var special = confirm("Would you like to use any special characters in your password?");
+
+  if (lowercase) allowedChars = allowedChars.concat(lowerCasedCharacters);
+  if (uppercase) allowedChars = allowedChars.concat(upperCasedCharacters);
+  if (numerics) allowedChars = allowedChars.concat(numericCharacters);
   if (special) allowedChars = allowedChars.concat(specialCharacters);
-  console.log(allowedChars);
-  //add an if statement here for an alert
+
+  if (!lowercase && !uppercase && !numerics && !special) {
+    alert("Please choose at least one option");
+    return password;
+  }
+  // Add an if statement here for an alert for all the vars and lump them together to simplify
   for (let index = 0; index < length; index++) {
-    var random = Math.floor(Math.random() * allowedChars.length)
-    var char = allowedChars[random]
-    password += char
+    var random = Math.floor(Math.random() * allowedChars.length);
+    var char = allowedChars[random];
+    password += char;
   }
   return password;
 }
