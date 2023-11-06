@@ -114,7 +114,11 @@ function generatePassword() {
   var special = confirm("Would you like to use any special characters in your password?");
   if (special) allowedChars = allowedChars.concat(specialCharacters);
   console.log(allowedChars)
-
+  for (let index = 0; index < length; index++) {
+    var random = Math.floor(Math.random() * allowedChars.length)
+    var char = allowedChars[random]
+    password += char
+  }
   // ask the user the questions
   // generate characters for password and assign them to var password
 
