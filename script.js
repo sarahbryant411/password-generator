@@ -21,7 +21,12 @@ function generatePassword() {
   // ask the user the questions
   // generate characters for password and assign them to var password
 
-  var length = prompt("What is the length of your password-between 8 and 128 chars long");
+  var length = prompt("What is the length of your password?");
+  console.log(length)
+  if(length < 8 || length > 128) {
+    alert ("Choose a number between 8-128")
+    return null
+  }
   var lowercase = confirm("Would you like to use lowecase letters in your password?");
   if (lowercase) allowedChars = allowedChars.concat(lowerCasedCharacters);
   console.log(allowedChars);
@@ -34,12 +39,14 @@ function generatePassword() {
   var special = confirm("Would you like to use any special characters in your password?");
   if (special) allowedChars = allowedChars.concat(specialCharacters);
   console.log(allowedChars);
+  //add an if statement here for an alert
   for (let index = 0; index < length; index++) {
     var random = Math.floor(Math.random() * allowedChars.length)
     var char = allowedChars[random]
     password += char
   }
-
+  return password;
+}
   // Write password to the #password input
   function writePassword() {
     var password = generatePassword();
@@ -49,8 +56,7 @@ function generatePassword() {
 
   }
 
-  return password;
-}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", function () { writePassword(generatePassword) });
 
