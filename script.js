@@ -43,15 +43,15 @@ function generatePassword() {
     alert("Please choose at least one option");
     return password;
 
+  }
 
-  }
-  // Add an if statement here for an alert for all the vars and lump them together to simplify
-  for (let index = 0; index < length; index++) {
-    var random = Math.floor(Math.random() * allowedChars.length);
-    var char = allowedChars[random];
-    password += char;
-  }
-  return password;
+// Add an if statement here for an alert for all the vars and lump them together to simplify
+for (let index = 0; index < length; index++) {
+  var random = Math.floor(Math.random() * allowedChars.length);
+  var char = allowedChars[random];
+  password += char;
+}
+return password;
 }
 // Write password to the #password input
 function writePassword() {
